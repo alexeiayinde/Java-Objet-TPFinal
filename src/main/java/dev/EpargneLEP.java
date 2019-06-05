@@ -4,7 +4,7 @@ public final class EpargneLEP extends CompteEpargne {
 
 	private static double tauxInteret = 1.5;
 
-	public EpargneLEP(Proprietaire proprio) {
+	public EpargneLEP(ProprietairePhysique proprio) {
 		super(proprio);
 		this.montantMin = 30;
 		this.montantMax = 7700;

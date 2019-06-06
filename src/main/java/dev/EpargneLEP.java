@@ -2,26 +2,11 @@ package dev;
 
 public final class EpargneLEP extends CompteEpargne {
 
-	private static double tauxInteret = 1.5;
-
 	public EpargneLEP(ProprietairePhysique proprio) {
 		super(proprio);
-		this.montantMin = 30;
-		this.montantMax = 7700;
+		this.montantMin = 30f;
+		this.montantMax = 7700f;
 		this.solde = this.montantMin;
+		this.tauxInteret = 1.5f;
 	}
-
-	@Override
-	public void appliquerInterets() {
-		solde += solde * EpargneLEP.tauxInteret / 100;
-	}
-
-	public static double getTauxInteret() {
-		return tauxInteret;
-	}
-
-	public static void setTauxInteret(double tauxInteret) {
-		EpargneLEP.tauxInteret = tauxInteret;
-	}
-
 }

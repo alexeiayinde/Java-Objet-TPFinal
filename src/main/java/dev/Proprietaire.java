@@ -1,8 +1,9 @@
 package dev;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public abstract class Proprietaire {
+public abstract class Proprietaire implements Serializable {
 
 	protected String nom;
 	protected String adresse;
@@ -45,6 +46,12 @@ public abstract class Proprietaire {
 
 	public void addCompte(Compte compte) {
 		listeCompte.add(compte);
+	}
+
+	@Override
+	public String toString() {
+		return "Nom du propriétaire : " + this.nom + "\nAdresse du propriétaire : " + this.adresse
+				+ "\nType de propriétaire : " + this.typeProprietaire;
 	}
 
 }

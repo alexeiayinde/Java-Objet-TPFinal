@@ -12,4 +12,9 @@ public final class ProprietairePhysique extends Proprietaire {
 		this.typeProprietaire = "Personne physique";
 	}
 
+	@Override
+	public String toString() {
+		return super.toString() + "\nDate de naissance : " + this.dateDeNaissance;
+	}
+
 }

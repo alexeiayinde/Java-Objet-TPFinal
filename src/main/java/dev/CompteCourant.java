@@ -7,19 +7,20 @@ public final class CompteCourant extends Compte {
 	public CompteCourant(Proprietaire proprio) {
 		super(proprio);
 		this.decouvert = 0;
-		this.solde = 0;
+		this.solde = 0f;
 	}
 
 	public double getDecouvert() {
 		return decouvert;
 	}
 
-	public void setDecouvert(double decouvert) {
+	public void setDecouvert(float decouvert) {
 		this.decouvert = decouvert;
+		System.out.println("Le nouveau découvert est de " + this.decouvert + "€.");
 	}
 
 	@Override
-	public void retirerEspece(double amount) throws RetraitException {
+	public void retirerEspece(float amount) throws RetraitException {
 		if (this.solde - amount >= decouvert)
 			this.solde -= amount;
 		else
@@ -27,7 +28,7 @@ public final class CompteCourant extends Compte {
 	}
 
 	@Override
-	public void verserEspece(double amount) {
+	public void verserEspece(float amount) {
 		this.solde += amount;
 	}
 

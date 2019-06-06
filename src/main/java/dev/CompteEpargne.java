@@ -2,14 +2,14 @@ package dev;
 
 public abstract class CompteEpargne extends Compte {
 
-	protected double montantMin, montantMax;
+	protected float montantMin, montantMax, tauxInteret;
 
 	public CompteEpargne(Proprietaire proprio) {
 		super(proprio);
 	}
 
 	@Override
-	public void verserEspece(double amount) throws VersementException {
+	public void verserEspece(float amount) throws VersementException {
 		if (this.solde + amount <= montantMax)
 			this.solde += amount;
 		else
@@ -18,13 +18,19 @@ public abstract class CompteEpargne extends Compte {
 	}
 
 	@Override
-	public void retirerEspece(double amount) throws RetraitException {
+	public void retirerEspece(float amount) throws RetraitException {
 		if (this.solde - amount >= montantMin)
 			this.solde -= amount;
 		else
 			throw new RetraitException("Retrait impossible ! Vous dépasserez le solde minimum autorisé.");
 	}
 
-	public abstract void appliquerInterets();
+	public void appliquerInterets() {
+		solde += solde * this.solde * tauxInteret / 100;
+	}
+
+	public float getTauxInteret() {
+		return tauxInteret;
+	}
 
 }

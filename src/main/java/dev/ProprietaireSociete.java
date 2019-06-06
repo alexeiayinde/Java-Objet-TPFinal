@@ -10,4 +10,9 @@ public final class ProprietaireSociete extends Proprietaire {
 		this.typeProprietaire = "Société";
 	}
 
+	@Override
+	public String toString() {
+		return super.toString() + "\nGérant de la société : " + this.gerant;
+	}
+
 }

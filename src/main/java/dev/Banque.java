@@ -73,7 +73,7 @@ public final class Banque {
 	public void appliquerInterets() {
 		for (int i = 0; i < listeCompte.size(); i++) {
 			if (listeCompte.get(i) instanceof CompteEpargne) {
-				((CompteEpargne) (listeCompte.get(i))).appliquerInterets();
+				((CompteEpargne) (listeCompte.get(i))).appliquerInteret();
 			}
 		}
 	}
@@ -88,7 +88,7 @@ public final class Banque {
 	public ArrayList<Proprietaire> searchProprio(String nom) {
 		ArrayList<Proprietaire> listeProprios = new ArrayList<Proprietaire>();
 		for (Proprietaire proprio : listeProprio) {
-			if (proprio.getNom().toUpperCase().indexOf(nom.toUpperCase()) != -1)
+			if (proprio.getNom().toUpperCase().contains(nom.toUpperCase()))
 				listeProprios.add(proprio);
 		}
 

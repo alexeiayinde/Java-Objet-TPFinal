@@ -25,8 +25,8 @@ public abstract class CompteEpargne extends Compte {
 			throw new RetraitException("Retrait impossible ! Vous dépasserez le solde minimum autorisé.");
 	}
 
-	public void appliquerInterets() {
-		solde += solde * this.solde * tauxInteret / 100;
+	public void appliquerInteret() {
+		solde += this.solde * tauxInteret / 100;
 	}
 
 	public float getTauxInteret() {

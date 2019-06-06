@@ -15,4 +15,12 @@ public final class ProprietaireSociete extends Proprietaire {
 		return super.toString() + "\nGérant de la société : " + this.gerant;
 	}
 
+	public String getGerant() {
+		return gerant;
+	}
+
+	public void setGerant(String gerant) {
+		this.gerant = gerant;
+	}
+
 }

@@ -17,4 +17,12 @@ public final class ProprietairePhysique extends Proprietaire {
 		return super.toString() + "\nDate de naissance : " + this.dateDeNaissance;
 	}
 
+	public LocalDate getDateDeNaissance() {
+		return dateDeNaissance;
+	}
+
+	public void setDateDeNaissance(LocalDate dateDeNaissance) {
+		this.dateDeNaissance = dateDeNaissance;
+	}
+
 }

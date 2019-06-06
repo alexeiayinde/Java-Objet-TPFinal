@@ -79,9 +79,8 @@ public final class Banque {
 	}
 
 	public void appliquerVirement() {
-		for (int i = 0; i < listeVirement.size(); i++) {
-			listeVirement.get(i).getCompteDebiteur().virement(listeVirement.get(i).getCompteCrediteur(),
-					listeVirement.get(i).getMontant());
+		for (VirementAuto virement : listeVirement) {
+			virement.getCompteDebiteur().virement(virement.getCompteCrediteur(), virement.getMontant());
 		}
 	}
 

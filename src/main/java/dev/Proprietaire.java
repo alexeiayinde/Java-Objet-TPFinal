@@ -36,10 +36,6 @@ public abstract class Proprietaire implements Serializable {
 		return typeProprietaire;
 	}
 
-	public void setTypeProprietaire(String typeProprietaire) {
-		this.typeProprietaire = typeProprietaire;
-	}
-
 	public ArrayList<Compte> getListeCompte() {
 		return listeCompte;
 	}

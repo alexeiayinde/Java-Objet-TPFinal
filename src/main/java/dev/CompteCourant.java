@@ -2,15 +2,18 @@ package dev;
 
 public final class CompteCourant extends Compte {
 
-	private double decouvert;
+	private float decouvert;
 
 	public CompteCourant(Proprietaire proprio) {
-		super(proprio);
-		this.decouvert = 0;
-		this.solde = 0f;
+		this(proprio, 0);
 	}
 
-	public double getDecouvert() {
+	public CompteCourant(Proprietaire proprio, float decouvert) {
+		super(proprio);
+		this.decouvert = decouvert;
+	}
+
+	public float getDecouvert() {
 		return decouvert;
 	}
 

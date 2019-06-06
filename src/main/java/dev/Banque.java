@@ -21,6 +21,7 @@ public final class Banque {
 	public Banque() {
 		listeProprio = new ArrayList<Proprietaire>();
 		listeCompte = new ArrayList<Compte>();
+		listeVirement = new ArrayList<VirementAuto>();
 	}
 
 	public List<Proprietaire> getListeProprio() {
@@ -35,7 +36,8 @@ public final class Banque {
 		return listeVirement;
 	}
 
-	public void addProprio(Proprietaire proprio) {
+	public void addProprio(Proprietaire proprio) { // En ajoutant un nouveau propriétaire, ses comptes associés sont
+													// également ajoutés dans listeCompte
 		if (!listeProprio.contains(proprio)) {
 			listeProprio.add(proprio);
 			for (Compte compte : proprio.getListeCompte()) {
@@ -45,7 +47,7 @@ public final class Banque {
 			System.out.println("Ce propriétaire existe déjà dans la base de données!");
 	}
 
-	public void addCompte(Compte compte) {
+	public void addCompte(Compte compte) { // Un nouveau compte est ajouté si le propriétaire existe déjà
 		if (!listeCompte.contains(compte) && listeProprio.contains(compte.getProprio())) {
 			listeCompte.add(compte);
 			for (int i = 0; i < listeProprio.size(); i++) {
@@ -86,16 +88,15 @@ public final class Banque {
 	public ArrayList<Proprietaire> searchProprio(String nom) {
 		ArrayList<Proprietaire> listeProprios = new ArrayList<Proprietaire>();
 		for (Proprietaire proprio : listeProprio) {
-			if (proprio.getNom().indexOf(nom) != -1)
+			if (proprio.getNom().toUpperCase().indexOf(nom.toUpperCase()) != -1)
 				listeProprios.add(proprio);
 		}
 
-		if (!listeProprios.isEmpty())
-			return listeProprios;
-		else {
+		if (listeProprios.isEmpty())
 			System.out.println("Ce propriétaire n'existe pas dans la base de données!");
-			return null;
-		}
+
+		return listeProprios;
+
 	}
 
 	public ArrayList<Compte> getAccounts(Proprietaire proprio) {
@@ -116,11 +117,10 @@ public final class Banque {
 				comptesDecouvert.add((CompteCourant) compte);
 		}
 
-		if (comptesDecouvert.isEmpty()) {
+		if (comptesDecouvert.isEmpty())
 			System.out.println("Aucun compte n'est à découvert.");
-			return null;
-		} else
-			return comptesDecouvert;
+
+		return comptesDecouvert;
 	}
 
 	public double getSoldeTotal(Proprietaire proprio) {
@@ -130,8 +130,8 @@ public final class Banque {
 			if (prop.equals(proprio)) {
 				for (Compte compte : prop.getListeCompte())
 					soldeTotal += compte.getSolde();
+				break;
 			}
-			break;
 		}
 		return soldeTotal;
 	}

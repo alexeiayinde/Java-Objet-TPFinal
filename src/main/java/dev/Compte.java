@@ -20,6 +20,7 @@ public abstract class Compte implements Serializable {
 		} while (listeNumero.contains(numero));
 
 		listeNumero.add(numero);
+		proprio.addCompte(this);
 	}
 
 	public Proprietaire getProprio() {

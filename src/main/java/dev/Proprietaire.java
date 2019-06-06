@@ -45,7 +45,11 @@ public abstract class Proprietaire implements Serializable {
 	}
 
 	public void addCompte(Compte compte) {
-		listeCompte.add(compte);
+		if (!listeCompte.contains(compte)) {
+			listeCompte.add(compte);
+		} else {
+			System.out.println("Ce compte existe déjà dans le fichier client!");
+		}
 	}
 
 	@Override

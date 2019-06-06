@@ -37,9 +37,9 @@ public final class VirementAuto {
 
 	@Override
 	public String toString() {
-		return "Virement automatique entre le compte " + compteDebiteur.getNumero() + " (" + compteDebiteur.getProprio()
-				+ ") et le compte " + compteCrediteur.getNumero() + " (" + compteCrediteur.getProprio()
-				+ ") d'un montant de " + this.montant + "€";
+		return "Virement automatique entre le compte " + compteDebiteur.getNumero() + " ("
+				+ compteDebiteur.getProprio().getNom() + ") et le compte " + compteCrediteur.getNumero() + " ("
+				+ compteCrediteur.getProprio().getNom() + ") d'un montant de " + this.montant + "€";
 	}
 
 }

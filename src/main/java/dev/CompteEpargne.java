@@ -13,7 +13,8 @@ public abstract class CompteEpargne extends Compte {
 		if (this.solde + amount <= montantMax)
 			this.solde += amount;
 		else
-			throw new VersementException("Versement impossible ! Vous dépasserez le solde maximum autorisé.");
+			throw new VersementException(
+					"Versement impossible ! Vous dépasserez le solde maximum autorisé (" + this.montantMax + "€).");
 
 	}
 
@@ -22,7 +23,8 @@ public abstract class CompteEpargne extends Compte {
 		if (this.solde - amount >= montantMin)
 			this.solde -= amount;
 		else
-			throw new RetraitException("Retrait impossible ! Vous dépasserez le solde minimum autorisé.");
+			throw new RetraitException(
+					"Retrait impossible ! Vous dépasserez le solde minimum autorisé (" + this.montantMin + "€).");
 	}
 
 	public void appliquerInteret() {

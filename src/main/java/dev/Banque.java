@@ -80,7 +80,10 @@ public final class Banque {
 
 	public void appliquerVirement() {
 		for (VirementAuto virement : listeVirement) {
-			virement.getCompteDebiteur().virement(virement.getCompteCrediteur(), virement.getMontant());
+			try {
+				virement.getCompteDebiteur().virement(virement.getCompteCrediteur(), virement.getMontant());
+			} catch (RetraitException e) {
+			}
 		}
 	}
 

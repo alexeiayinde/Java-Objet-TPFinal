@@ -43,20 +43,28 @@ public abstract class Compte implements Serializable {
 
 	public abstract void retirerEspece(float amount) throws RetraitException;
 
-	public void virement(Compte compteCrediteur, float amount) {
+	public void virement(Compte compteCrediteur, float amount) throws RetraitException {
 		if (this.getProprio().equals(compteCrediteur.getProprio())) {
+			this.retirerEspece(amount);
 			try {
-				this.retirerEspece(amount);
 				compteCrediteur.verserEspece(amount);
 				System.out.println("Virement effectué !");
-			} catch (RetraitException | VersementException e) {
+			} catch (VersementException e) {
+				try {
+					this.verserEspece(amount); // On re-verse l'argent dans le compte débiteur
+				} catch (VersementException e1) {
+				}
 			}
 		} else {
+			this.retirerEspece(amount + 1);
 			try {
-				this.retirerEspece(amount + 1);
 				compteCrediteur.verserEspece(amount);
 				System.out.println("Virement effectué !");
-			} catch (RetraitException | VersementException e) {
+			} catch (VersementException e) {
+				try {
+					this.verserEspece(amount + 1);
+				} catch (VersementException e1) {
+				}
 			}
 		}
 	}
